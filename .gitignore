@@ -1,0 +1,6 @@
+bundle/*
+.netrwhist
+tmp
+snippets
+.VimballRecord
+*.swp
