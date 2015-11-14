@@ -37,6 +37,9 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set wildmenu
+set showmatch
+set lazyredraw
 set cul
 set nocul
 set ttyfast
