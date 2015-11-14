@@ -138,6 +138,7 @@ Plugin 'elzr/vim-json'
 Plugin 'Blackrush/vim-gocode.git'
 
 " ---- Extras/Advanced plugins ----------------------------------------
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/gist-vim.git'
 Plugin 'ekalinin/Dockerfile.vim'
 

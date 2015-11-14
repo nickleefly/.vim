@@ -1,6 +1,6 @@
 set mouse=a
 set ruler
-set term=xterm-256color
+set term=screen-256color
 color fruit
 color camo
 color desertEx
