@@ -1,5 +1,6 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Gotta be first
+set nocompatible
+filetype off
 
 set encoding=utf-8
 let mapleader=","
@@ -88,46 +89,57 @@ set backspace=indent,eol,start
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'briancollins/vim-jst.git'
+" ----- Making Vim look good ------------------------------------------
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'bling/vim-airline'
+
+" ----- Vim as a programmer's text editor -----------------------------
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'bling/vim-airline'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-haml'
-Plugin 'pangloss/vim-javascript'
-Plugin 'groenewege/vim-less'
-Plugin 'tpope/vim-markdown'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'moll/vim-node'
-Plugin 'mmalecki/vim-node.js'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'wavded/vim-stylus'
 Plugin 'ervandew/supertab.git'
-Plugin 'tpope/vim-surround'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'ap/vim-css-color'
-Plugin 'tpope/vim-endwise'
-Plugin 'elzr/vim-json'
 Plugin 'honza/vim-snippets.git'
 Plugin 'SirVer/ultisnips.git'
 Plugin 'Valloric/YouCompleteMe.git'
-Plugin 'mattn/gist-vim.git'
-Plugin 'tpope/vim-commentary.git'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'tpope/vim-repeat.git'
 Plugin 'justinmk/vim-sneak.git'
 Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'vim-scripts/ZoomWin.git'
-Plugin 'Blackrush/vim-gocode.git'
 Plugin 'mbbill/undotree'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/ZoomWin.git'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-repeat.git'
+Plugin 'tpope/vim-commentary.git'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'mattn/emmet-vim'
+
+" ----- Working with Git ----------------------------------------------
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter.git'
+
+" ----- Syntax plugins ------------------------------------------------
+Plugin 'briancollins/vim-jst.git'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-haml'
+Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'groenewege/vim-less'
+Plugin 'tpope/vim-markdown'
+Plugin 'moll/vim-node'
+Plugin 'mmalecki/vim-node.js'
+Plugin 'wavded/vim-stylus'
+Plugin 'ap/vim-css-color'
+Plugin 'elzr/vim-json'
+Plugin 'Blackrush/vim-gocode.git'
+
+" ---- Extras/Advanced plugins ----------------------------------------
+Plugin 'mattn/gist-vim.git'
+Plugin 'ekalinin/Dockerfile.vim'
 
 " load the plugin and indent settings for the detected filetype
 " All of your Plugins must be added before the following line
@@ -153,54 +165,3 @@ color default
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-cmap w!! w !sudo tee > /dev/null %
-" Fast saving
-nmap <Leader>w :w!<cr>
-nmap .<Leader> :wq!<cr>
-
-" ------------------------------------------------------------------------------
-" snipmate
-" ------------------------------------------------------------------------------
-" Configure snipmate dir
-let g:snippets_dir="~/.vim/snippets"
-
-" ------------------------------------------------------------------------------
-" File type specifics *
-" ------------------------------------------------------------------------------
-" Go
-au FileType go nmap gd <Plug>(go-def)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
-" Do not create swap files, we're using git after all
-set nobackup
-set nowritebackup
-set noswapfile
-
-" CtrlP
-let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_mruf_relative = 1
-nmap <Leader>p :CtrlPMRU<CR>
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-nnoremap <leader>h :split<enter>
-nnoremap <leader>v :vsplit<enter>
-let g:AutoPairsMultilineClose=0
