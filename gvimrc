@@ -27,7 +27,7 @@ color molokai
 " ConqueTerm wrapper
 function StartTerm()
   execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \ 
+  setlocal listchars=tab:\ \
 endfunction
 
 " Project Tree
