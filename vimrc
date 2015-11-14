@@ -89,6 +89,9 @@ set backspace=indent,eol,start
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
 " ----- Making Vim look good ------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
@@ -103,7 +106,7 @@ Plugin 'honza/vim-snippets.git'
 Plugin 'SirVer/ultisnips.git'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'justinmk/vim-sneak.git'
-Plugin 'jiangmiao/auto-pairs.git'
+Plugin 'Raimondi/delimitMate'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/ZoomWin.git'

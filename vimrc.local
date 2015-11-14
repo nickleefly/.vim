@@ -169,5 +169,5 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 nnoremap <leader>h :split<enter>
 nnoremap <leader>v :vsplit<enter>
 
-" autopair
-let g:AutoPairsMultilineClose=0
+" Open/close tagbar with \b
+nmap <silent> <leader>b :TagbarToggle<CR>
