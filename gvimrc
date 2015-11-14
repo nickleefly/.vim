@@ -3,16 +3,9 @@ if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
-  " Command-T for CommandT
-  macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
-
   " Command-Shift-F for Ack
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
   map <D-F> :Ack<space>
-
-  " Command-e for ConqueTerm
-  map <D-e> :call StartTerm()<CR>
 
   " Command-/ to toggle comments
   map <D-/> <plug>NERDCommenterToggle<CR>
@@ -23,12 +16,6 @@ set guioptions-=T
 
 " Default gui color scheme
 color molokai
-
-" ConqueTerm wrapper
-function StartTerm()
-  execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \
-endfunction
 
 " Project Tree
 autocmd VimEnter * NERDTree
