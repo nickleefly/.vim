@@ -142,7 +142,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_mruf_relative = 1
-nmap <Leader>p :CtrlPMRU<CR>
+nmap <Space>p :CtrlPMRU<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
