@@ -178,3 +178,4 @@ augroup mydelimitMate
 augroup END
 
 set rtp+=~/.fzf
+set term=screen-256color
