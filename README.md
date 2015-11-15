@@ -18,3 +18,10 @@ Run "make" to install it, or
 ```
 $ ./install.sh
 ```
+
+## Update
+```
+cd ~/.vim
+git pull
+git submodule update --init --recursive
+```
