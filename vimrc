@@ -108,3 +108,73 @@ color default
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+
+" ------------------------------------------------------------------------------
+" snipmate
+" ------------------------------------------------------------------------------
+" Configure snipmate dir
+let g:snippets_dir="~/.vim/snippets"
+
+" ------------------------------------------------------------------------------
+" File type specifics *
+" ------------------------------------------------------------------------------
+" Go
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+" Do not create swap files, we're using git after all
+set nobackup
+set nowritebackup
+set noswapfile
+
+" CtrlP
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_dont_split = 'NERD_tree_2'
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_mruf_relative = 1
+nmap <Leader>p :CtrlPMRU<CR>
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" split
+nnoremap <leader>h :split<enter>
+nnoremap <leader>v :vsplit<enter>
+
+" Open/close tagbar with \b
+nmap <silent> <leader>b :TagbarToggle<CR>
+
+let delimitMate_expand_cr = 1
+augroup mydelimitMate
+  au!
+  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+  au FileType tex let b:delimitMate_quotes = ""
+  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
+
+set rtp+=~/.fzf
