@@ -100,6 +100,8 @@ Plugin 'bling/vim-airline'
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab.git'
 Plugin 'honza/vim-snippets.git'
@@ -169,3 +171,5 @@ color default
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+set rtp+=~/.fzf
