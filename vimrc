@@ -10,6 +10,7 @@ execute pathogen#infect()
 set number
 set relativenumber
 set ruler
+set t_Co=256
 syntax on
 
 " Whitespace stuff
@@ -138,7 +139,13 @@ set nowritebackup
 set noswapfile
 
 " CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_mruf_relative = 1

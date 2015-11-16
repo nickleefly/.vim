@@ -106,9 +106,6 @@
 [submodule "bundle/vim-sneak"]
 	path = bundle/vim-sneak
 	url = https://github.com/justinmk/vim-sneak.git
-[submodule "bundle/auto-pairs"]
-	path = bundle/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "bundle/ZoomWin"]
 	path = bundle/ZoomWin
 	url = https://github.com/vim-scripts/ZoomWin.git
@@ -130,3 +127,9 @@
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/vim-preview"]
+	path = bundle/vim-preview
+	url = https://github.com/greyblake/vim-preview.git
+[submodule "bundle/delimitMate"]
+	path = bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
