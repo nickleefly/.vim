@@ -8,6 +8,7 @@ let mapleader=","
 set number
 set relativenumber
 set ruler
+set t_Co=256
 syntax on
 
 " Whitespace stuff
@@ -206,7 +207,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .hg
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
-      \ -g ""'let g:ctrlp_dont_split = 'NERD_tree_2'
+      \ -g ""'
+let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_mruf_relative = 1
 nmap <Leader>p :CtrlPMRU<CR>
@@ -245,3 +247,4 @@ augroup mydelimitMate
 augroup END
 
 set rtp+=~/.fzf
+set term=screen-256color
