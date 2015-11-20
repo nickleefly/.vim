@@ -45,6 +45,7 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
 " Close Nerdtree when selecting a file
 let NERDTreeQuitOnOpen=1
+let g:NERDTreeDirArrows=0
 
 
 " ZoomWin configuration
