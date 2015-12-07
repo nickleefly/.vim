@@ -113,3 +113,5 @@ inoremap kj <Esc>
 cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
 nmap .<Leader> :wq!<cr>
+
+nnoremap ; :
