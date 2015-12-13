@@ -130,9 +130,9 @@
 [submodule "bundle/vim-preview"]
 	path = bundle/vim-preview
 	url = https://github.com/greyblake/vim-preview.git
-[submodule "bundle/delimitMate"]
-	path = bundle/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
 [submodule "bundle/vim-tmux-navigator"]
 	path = bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "bundle/auto-pairs"]
+	path = bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git

@@ -115,3 +115,6 @@ nmap <Leader>w :w!<cr>
 nmap .<Leader> :wq!<cr>
 
 nnoremap ; :
+
+" autopair
+let g:AutoPairsMultilineClose=0
