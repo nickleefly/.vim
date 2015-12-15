@@ -106,8 +106,6 @@ imap <F1> <Esc>
 " escape is so far away
 noremap <Leader>m <Esc>
 inoremap <Leader>m <Esc>
-noremap kj <Esc>
-inoremap kj <Esc>
 
 " Fast saving
 cmap w!! w !sudo tee > /dev/null %
