@@ -112,7 +112,7 @@ inoremap kj <Esc>
 " Fast saving
 cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
-nmap .<Leader> :wq!<cr>
+nmap <Leader>. :wq!<cr>
 
 nnoremap ; :
 
