@@ -110,9 +110,8 @@ inoremap <Leader>m <Esc>
 " Fast saving
 cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
+nmap <Leader>q :q!<cr>
 nmap <Leader>. :wq!<cr>
-
-nnoremap ; :
 
 " autopair
 let g:AutoPairsMultilineClose=0
