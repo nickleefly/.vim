@@ -1,6 +1,5 @@
 " Gotta be first
 set nocompatible
-filetype off
 
 set encoding=utf-8
 let mapleader=","
@@ -86,79 +85,71 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " ----- Making Vim look good ------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'bling/vim-airline'
 
 " ----- Vim as a programmer's text editor -----------------------------
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/neoyank.vim'
-Plugin 'Shougo/vimproc'
-Plugin 'ervandew/supertab'
-Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'terryma/vim-expand-region'
-Plugin 'justinmk/vim-sneak'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'mbbill/undotree'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/ZoomWin'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'mattn/emmet-vim'
+Plug 'rking/ag.vim'
+Plug 'junegunn/fzf',        { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-expand-region'
+Plug 'justinmk/vim-sneak'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mbbill/undotree'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/ZoomWin'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-unimpaired'
+Plug 'mattn/emmet-vim'
 
 " ----- Working with Git ----------------------------------------------
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-" ----- Syntax plugins ------------------------------------------------
-Plugin 'briancollins/vim-jst'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-haml'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'fatih/vim-go'
-Plugin 'pangloss/vim-javascript'
-Plugin 'groenewege/vim-less'
-Plugin 'tpope/vim-markdown'
-Plugin 'moll/vim-node'
-Plugin 'mmalecki/vim-node.js'
-Plugin 'wavded/vim-stylus'
-Plugin 'ap/vim-css-color'
-Plugin 'elzr/vim-json'
+" ----- Syntax Plugs ------------------------------------------------
+Plug 'briancollins/vim-jst'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-haml'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'groenewege/vim-less'
+Plug 'tpope/vim-markdown'
+Plug 'moll/vim-node'
+Plug 'mmalecki/vim-node.js'
+Plug 'wavded/vim-stylus'
+Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'honza/dockerfile.vim'
 
-" ---- Extras/Advanced plugins ----------------------------------------
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'mattn/gist-vim'
-Plugin 'ekalinin/Dockerfile.vim'
+" ---- Extras/Advanced Plugs ----------------------------------------
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'mattn/gist-vim'
+Plug 'ekalinin/Dockerfile.vim'
 
-" load the plugin and indent settings for the detected filetype
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
