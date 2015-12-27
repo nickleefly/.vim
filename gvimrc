@@ -3,9 +3,9 @@ if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
-  " Command-Shift-F for Ack
+  " Command-Shift-F for Ag
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
-  map <D-F> :Ack<space>
+  map <D-F> :Ag<space>
 
   " Command-/ to toggle comments
   map <D-/> <plug>NERDCommenterToggle<CR>
