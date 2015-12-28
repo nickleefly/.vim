@@ -48,7 +48,7 @@ let NERDTreeQuitOnOpen=1
 map <Leader>z :ZoomWin<CR>
 
 " Edit user .vimrc
-map <Leader>r :e ~/.vimrc<CR>
+map <Leader>rc :e ~/.vimrc<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -67,7 +67,6 @@ endfunction
 
 function s:setupMarkup()
   call s:setupWrapping()
-  map <buffer> <Leader>p :Mm <CR>
 endfunction
 
 " make and python use real tabs
@@ -107,8 +106,10 @@ Plugin 'ervandew/supertab.git'
 Plugin 'honza/vim-snippets.git'
 Plugin 'SirVer/ultisnips.git'
 Plugin 'Valloric/YouCompleteMe.git'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-expand-region'
 Plugin 'justinmk/vim-sneak.git'
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/ZoomWin.git'
@@ -140,7 +141,6 @@ Plugin 'mmalecki/vim-node.js'
 Plugin 'wavded/vim-stylus'
 Plugin 'ap/vim-css-color'
 Plugin 'elzr/vim-json'
-Plugin 'Blackrush/vim-gocode.git'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 Plugin 'christoomey/vim-tmux-navigator'
@@ -190,26 +190,72 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+"-------------------------------------------------------------------------------
+" Go settings
+"-------------------------------------------------------------------------------
+map <C-n> :lne<CR>
+map <C-m> :lp<CR>
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let go_fmt_autosave = 1
+let g:go_play_open_browser = 0
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Do not create swap files, we're using git after all
 set nobackup
 set nowritebackup
 set noswapfile
 
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  -quick-match buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
+
 " CtrlP
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_mruf_relative = 1
-nmap <Leader>p :CtrlPMRU<CR>
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden
+
+  let g:ctrlp_match_window = 'bottom,order:ttb'
+  let g:ctrlp_switch_buffer = 0
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = ['ag %s --files-with-matches -g ""']
+  let g:ctrlp_user_command += ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+else
+  " Fall back to using git ls-files if Ag is not available
+  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -235,13 +281,8 @@ nnoremap <leader>v :vsplit<enter>
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
 
-let delimitMate_expand_cr = 1
-augroup mydelimitMate
-  au!
-  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-  au FileType tex let b:delimitMate_quotes = ""
-  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
-  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-augroup END
+" autopair
+let g:AutoPairsMultilineClose=0
 
 set rtp+=~/.fzf
+set term=screen-256color
