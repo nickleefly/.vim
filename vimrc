@@ -8,6 +8,7 @@ let mapleader=","
 set number
 set relativenumber
 set ruler
+set t_Co=256
 syntax on
 
 " Whitespace stuff
@@ -42,7 +43,7 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
 " Close Nerdtree when selecting a file
 let NERDTreeQuitOnOpen=1
-
+let g:NERDTreeDirArrows=0
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
@@ -102,22 +103,27 @@ Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'ervandew/supertab.git'
-Plugin 'honza/vim-snippets.git'
-Plugin 'SirVer/ultisnips.git'
-Plugin 'Valloric/YouCompleteMe.git'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/neoyank.vim'
+Plugin 'Shougo/vimproc'
+Plugin 'ervandew/supertab'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
-Plugin 'justinmk/vim-sneak.git'
+Plugin 'justinmk/vim-sneak'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/ZoomWin.git'
+Plugin 'vim-scripts/ZoomWin'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-repeat.git'
-Plugin 'tpope/vim-commentary.git'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
@@ -125,13 +131,14 @@ Plugin 'mattn/emmet-vim'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter.git'
+Plugin 'airblade/vim-gitgutter'
 
 " ----- Syntax plugins ------------------------------------------------
-Plugin 'briancollins/vim-jst.git'
+Plugin 'briancollins/vim-jst'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
@@ -144,7 +151,7 @@ Plugin 'elzr/vim-json'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'mattn/gist-vim.git'
+Plugin 'mattn/gist-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 
 " load the plugin and indent settings for the detected filetype
@@ -256,6 +263,7 @@ else
   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
+nmap <Leader>p :CtrlPMRU<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
