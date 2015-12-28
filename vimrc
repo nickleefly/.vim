@@ -220,5 +220,8 @@ nnoremap <leader>v :vsplit<enter>
 " Open/close tagbar with \b
 nmap <silent> <leader>tb :TagbarToggle<CR>
 
+" autopair
+let g:AutoPairsMultilineClose=0
+
 set rtp+=~/.fzf
 set term=screen-256color
