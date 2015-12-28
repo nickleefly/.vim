@@ -220,12 +220,18 @@ set noswapfile
 " Unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  -quick-match buffer<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files
+    \ -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files
+    \ -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru
+    \ -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline
+    \ -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank
+    \ history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer
+    \ -quick-match buffer<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -248,11 +254,13 @@ if executable('ag')
   let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_use_caching = 0
   let g:ctrlp_user_command = ['ag %s --files-with-matches -g ""']
-  let g:ctrlp_user_command += ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+  let g:ctrlp_user_command +=
+      \ ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 else
   " Fall back to using git ls-files if Ag is not available
   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+  let g:ctrlp_user_command =
+      \ ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 nmap <Leader>p :CtrlPMRU<CR>
 
@@ -260,7 +268,8 @@ nmap <Leader>p :CtrlPMRU<CR>
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf =
+    \ '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
