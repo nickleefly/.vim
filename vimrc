@@ -40,7 +40,7 @@ let NERDTreeIgnore=['\.rbc$', '\~$']
 " Nerd Tree (toggle)
 map <Leader>n :NERDTreeToggle<CR>
 " Nerd Tree (reveal current file)
-map <Leader>f :NERDTreeFind<CR>
+map <Leader>nf :NERDTreeFind<CR>
 " Close Nerdtree when selecting a file
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeDirArrows=0
@@ -287,7 +287,7 @@ nnoremap <leader>h :split<enter>
 nnoremap <leader>v :vsplit<enter>
 
 " Open/close tagbar with \b
-nmap <silent> <leader>b :TagbarToggle<CR>
+nmap <silent> <leader>tb :TagbarToggle<CR>
 
 " autopair
 let g:AutoPairsMultilineClose=0
