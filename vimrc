@@ -71,7 +71,6 @@ endfunction
 
 function s:setupMarkup()
   call s:setupWrapping()
-  map <buffer> <Leader>p :Mm <CR>
 endfunction
 
 " make and python use real tabs
