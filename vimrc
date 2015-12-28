@@ -39,7 +39,7 @@ let NERDTreeIgnore=['\.rbc$', '\~$']
 " Nerd Tree (toggle)
 map <Leader>n :NERDTreeToggle<CR>
 " Nerd Tree (reveal current file)
-map <Leader>f :NERDTreeFind<CR>
+map <Leader>nf :NERDTreeFind<CR>
 " Close Nerdtree when selecting a file
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeDirArrows=0
@@ -48,7 +48,7 @@ let g:NERDTreeDirArrows=0
 map <Leader>z :ZoomWin<CR>
 
 " Edit user .vimrc
-map <Leader>r :e ~/.vimrc<CR>
+map <Leader>rc :e ~/.vimrc<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -67,7 +67,6 @@ endfunction
 
 function s:setupMarkup()
   call s:setupWrapping()
-  map <buffer> <Leader>p :Mm <CR>
 endfunction
 
 " make and python use real tabs
@@ -279,7 +278,10 @@ nnoremap <leader>h :split<enter>
 nnoremap <leader>v :vsplit<enter>
 
 " Open/close tagbar with \b
-nmap <silent> <leader>b :TagbarToggle<CR>
+nmap <silent> <leader>tb :TagbarToggle<CR>
+
+" autopair
+let g:AutoPairsMultilineClose=0
 
 set rtp+=~/.fzf
 set term=screen-256color
