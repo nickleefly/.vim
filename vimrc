@@ -102,9 +102,6 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 set modeline
 set modelines=10
 
-" Default color scheme
-color default
-
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
