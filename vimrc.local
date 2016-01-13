@@ -1,9 +1,9 @@
 set mouse=a
 set ruler
 set term=xterm-256color
-color fruit
-color camo
-color desertEx
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 " when using a projector, use a light color scheme and no syntax
 function Pres ()
@@ -112,3 +112,9 @@ cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
 nmap <Leader>q :q!<cr>
 nmap <Leader>. :wq!<cr>
+
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+xnoremap <  <gv
+xnoremap >  >gv
