@@ -162,9 +162,6 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 set modeline
 set modelines=10
 
-" Default color scheme
-color default
-
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
@@ -291,6 +288,11 @@ nmap <silent> <leader>tb :TagbarToggle<CR>
 
 " autopair
 let g:AutoPairsMultilineClose=0
+
+" vim-sneak
+let g:sneak#streak = 1
+nmap <bs> <Plug>SneakPrevious
+xmap <bs> <Plug>SneakPrevious
 
 set rtp+=~/.fzf
 set term=screen-256color
