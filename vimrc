@@ -105,7 +105,6 @@ Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
@@ -127,25 +126,20 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " ----- Syntax Plugs ------------------------------------------------
-Plug 'briancollins/vim-jst'
-Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
 Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
-Plug 'groenewege/vim-less'
 Plug 'tpope/vim-markdown'
 Plug 'moll/vim-node'
 Plug 'mmalecki/vim-node.js'
-Plug 'wavded/vim-stylus'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'honza/dockerfile.vim'
 
 " ---- Extras/Advanced Plugs ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'mattn/gist-vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
