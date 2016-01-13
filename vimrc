@@ -230,5 +230,10 @@ nmap <silent> <leader>tb :TagbarToggle<CR>
 " autopair
 let g:AutoPairsMultilineClose=0
 
+" vim-sneak
+let g:sneak#streak = 1
+nmap <bs> <Plug>SneakPrevious
+xmap <bs> <Plug>SneakPrevious
+
 set rtp+=~/.fzf
 set term=screen-256color

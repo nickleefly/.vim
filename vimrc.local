@@ -112,3 +112,9 @@ cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
 nmap <Leader>q :q!<cr>
 nmap <Leader>. :wq!<cr>
+
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+xnoremap <  <gv
+xnoremap >  >gv
