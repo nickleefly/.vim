@@ -112,7 +112,6 @@ Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
 Plugin 'justinmk/vim-sneak'
 Plugin 'jiangmiao/auto-pairs'
@@ -134,24 +133,19 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " ----- Syntax plugins ------------------------------------------------
-Plugin 'briancollins/vim-jst'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
-Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-markdown'
 Plugin 'moll/vim-node'
 Plugin 'mmalecki/vim-node.js'
-Plugin 'wavded/vim-stylus'
 Plugin 'ap/vim-css-color'
 Plugin 'elzr/vim-json'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'mattn/gist-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 
 " load the plugin and indent settings for the detected filetype
