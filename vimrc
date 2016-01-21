@@ -219,5 +219,8 @@ let g:sneak#streak = 1
 nmap <bs> <Plug>SneakPrevious
 xmap <bs> <Plug>SneakPrevious
 
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+
 set rtp+=~/.fzf
 set term=screen-256color
