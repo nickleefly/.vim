@@ -24,8 +24,6 @@ set nohls
 set hls
 noremap <Leader><Space> :noh<CR>:call clearmatches()<CR>
 
-" map <Leader>. :tabn<CR>
-
 " this makes it use the system clipboard
 " whenever yanking to the "unnamed" register.
 set clipboard=unnamed
@@ -111,7 +109,7 @@ inoremap <Leader>m <Esc>
 cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
 nmap <Leader>q :q!<cr>
-nmap <Leader>. :wq!<cr>
+nmap <Leader>s :wq!<cr>
 
 nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
 nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>

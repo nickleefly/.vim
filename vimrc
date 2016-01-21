@@ -103,11 +103,6 @@ Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/neoyank.vim'
-Plugin 'Shougo/vimproc'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
@@ -217,22 +212,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files
-    \ -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files
-    \ -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru
-    \ -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline
-    \ -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank
-    \ history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer
-    \ -quick-match buffer<cr>
-
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
@@ -296,6 +275,9 @@ let g:AutoPairsMultilineClose=0
 let g:sneak#streak = 1
 nmap <bs> <Plug>SneakPrevious
 xmap <bs> <Plug>SneakPrevious
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
 
 set rtp+=~/.fzf
 set term=screen-256color
