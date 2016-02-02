@@ -95,7 +95,7 @@ Plug 'bling/vim-airline'
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlp/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -202,17 +202,6 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
