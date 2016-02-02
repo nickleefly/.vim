@@ -18,7 +18,7 @@
 	url = https://github.com/kchmck/vim-coffee-script
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim
+	url = https://github.com/ctrlp/ctrlp.vim
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim
@@ -130,24 +130,6 @@
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "bundle/unite"]
-	path = bundle/unite
-	url = https://github.com/Shougo/unite.vim.git
-[submodule "bundle/unite-outline"]
-	path = bundle/unite-outline
-	url = https://github.com/Shougo/unite-outline.git
-[submodule "bundle/neomru"]
-	path = bundle/neomru
-	url = https://github.com/Shougo/neomru.vim.git
-[submodule "bundle/neoyank"]
-	path = bundle/neoyank
-	url = https://github.com/Shougo/neoyank.vim.git
-[submodule "bundle/vimproc"]
-	path = bundle/vimproc
-	url = https://github.com/Shougo/vimproc.git
-[submodule "bundle/vim-easymotion"]
-	path = bundle/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "bundle/vim-expand-region"]
 	path = bundle/vim-expand-region
 	url = https://github.com/terryma/vim-expand-region.git
