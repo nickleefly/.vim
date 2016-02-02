@@ -102,7 +102,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlp/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
@@ -138,6 +138,7 @@ Plugin 'moll/vim-node'
 Plugin 'mmalecki/vim-node.js'
 Plugin 'ap/vim-css-color'
 Plugin 'elzr/vim-json'
+Plugin 'honza/dockerfile.vim'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 Plugin 'christoomey/vim-tmux-navigator'
@@ -211,17 +212,6 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
