@@ -174,7 +174,11 @@ else
   let g:ctrlp_user_command =
       \ ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
-nmap <Leader>p :CtrlPMRU<CR>
+nmap <Leader>r :CtrlPMRU<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>f :CtrlP<CR>
+nmap <Leader>l :CtrlPLine<CR>
+nmap <Leader>t :CtrlPTag<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

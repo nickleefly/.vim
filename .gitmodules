@@ -18,7 +18,7 @@
 	url = https://github.com/kchmck/vim-coffee-script
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = https://github.com/ctrlp/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim
