@@ -95,14 +95,13 @@ Plugin 'VundleVim/Vundle.vim'
 " ----- Making Vim look good ------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 
 " ----- Vim as a programmer's text editor -----------------------------
-Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'ctrlp/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
@@ -231,7 +230,11 @@ else
   let g:ctrlp_user_command =
       \ ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
-nmap <Leader>p :CtrlPMRU<CR>
+nmap <Leader>r :CtrlPMRU<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>f :CtrlP<CR>
+nmap <Leader>l :CtrlPLine<CR>
+nmap <Leader>t :CtrlPTag<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
