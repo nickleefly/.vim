@@ -130,7 +130,7 @@ Plug 'moll/vim-node'
 Plug 'mmalecki/vim-node.js'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
-Plug 'honza/dockerfile.vim'
+Plug 'scrooloose/syntastic'
 
 " ---- Extras/Advanced Plugs ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
@@ -261,6 +261,11 @@ xmap <bs> <Plug>SneakPrevious
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
+
+" syntastic
+let g:syntastic_javascript_checkers = ['standard']
+autocmd bufwritepost *.js silent !standard-format -w %
+set autoread
 
 set rtp+=~/.fzf
 set term=screen-256color
