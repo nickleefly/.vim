@@ -264,7 +264,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " syntastic
 let g:syntastic_javascript_checkers = ['standard']
-autocmd bufwritepost *.js silent !standard -w %
+autocmd bufwritepost *.js silent !standard --fix %
 set autoread
 
 set rtp+=~/.fzf
