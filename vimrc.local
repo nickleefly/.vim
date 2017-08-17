@@ -45,6 +45,7 @@ set autoindent
 set showmode
 set showcmd
 set visualbell
+set autochdir
 nnoremap / /\v
 vnoremap / /\v
 if exists("&colorcolumn")

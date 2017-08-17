@@ -125,6 +125,7 @@ Plug 'tpope/vim-haml'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
 Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-markdown'
 Plug 'moll/vim-node'
 Plug 'mmalecki/vim-node.js'
@@ -286,3 +287,4 @@ set term=screen-256color
 
 " Undotree toggle
 nnoremap U :UndotreeToggle<cr>
+let g:jsx_ext_required = 0
