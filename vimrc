@@ -123,7 +123,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-markdown'
