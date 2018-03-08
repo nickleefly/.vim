@@ -1,9 +1,19 @@
-" Gotta be first
+" vim: set foldmethod=marker foldlevel=0
+" ============================================================================
+" .vimrc of Xiuyu Li {{{
+" ============================================================================
+
+" ============================================================================
+" Gotta be first {{{
+" ============================================================================
 set nocompatible
 
+" }}}
+" ============================================================================
+" BASIC SETTINGS {{{
+" ============================================================================
 set encoding=utf-8
 let mapleader=","
-
 set number
 set relativenumber
 set ruler
@@ -24,6 +34,11 @@ set ignorecase
 set smartcase
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Do not create swap files, we're using git after all
+set nobackup
+set nowritebackup
+set noswapfile
+
 " Invisible characters
 " autocmd BufEnter * set listchars=tab:▸\ ,eol:¬
 
@@ -31,10 +46,22 @@ noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc
 
+" Use modeline overrides
+set modeline
+set modelines=10
+
 " Status bar
 set laststatus=2
 
-" NERDTree configuration
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set term=screen-256color
+
+" }}}
+" ============================================================================
+" NERDTree configuration {{{
+" ============================================================================
 let NERDTreeIgnore=['\.rbc$', '\~$']
 " Nerd Tree (toggle)
 map <Leader>n :NERDTreeToggle<CR>
@@ -44,16 +71,38 @@ map <Leader>nf :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeDirArrows=0
 
+" }}}
+" ============================================================================
+" Some mapping with Leader key {{{
+" ============================================================================
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
 
 " Edit user .vimrc
 map <Leader>rc :e ~/.vimrc<CR>
 
+" split
+nnoremap <leader>h :split<enter>
+nnoremap <leader>v :vsplit<enter>
+
+" Open/close tagbar with \b
+nmap <silent> <leader>tb :TagbarToggle<CR>
+
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
-" Remember last location in file
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" }}}
+" ============================================================================
+" Remember last location in file {{{
+" ============================================================================
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
@@ -81,9 +130,10 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
+" }}}
+" ============================================================================
+" VIM-PLUG BLOCK {{{
+" ============================================================================
 call plug#begin('~/.vim/plugged')
 
 " ----- Making Vim look good ------------------------------------------
@@ -107,7 +157,7 @@ Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/ZoomWin'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -123,7 +173,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-markdown'
@@ -139,32 +189,25 @@ Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Use modeline overrides
-set modeline
-set modelines=10
-
-" Include user's local vim config
+" }}}
+" ============================================================================
+" Include user's local vim config {{{
+" ============================================================================
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-" ------------------------------------------------------------------------------
-" snipmate
-" ------------------------------------------------------------------------------
+" }}}
+" ============================================================================
+" snipmate {{{
+" ============================================================================
 " Configure snipmate dir
 let g:snippets_dir="~/.vim/snippets"
 
-" ------------------------------------------------------------------------------
-" File type specifics *
-" ------------------------------------------------------------------------------
+" }}}
+" ============================================================================
+" File type specifics {{{
+" ============================================================================
 " Go
 au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>i <Plug>(go-info)
@@ -181,9 +224,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-"-------------------------------------------------------------------------------
 " Go settings
-"-------------------------------------------------------------------------------
 map <C-n> :lne<CR>
 map <C-m> :lp<CR>
 let g:go_highlight_functions = 1
@@ -198,12 +239,10 @@ let g:go_play_open_browser = 0
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-" Do not create swap files, we're using git after all
-set nobackup
-set nowritebackup
-set noswapfile
-
-" CtrlP
+" }}}
+" ============================================================================
+" CtrlP {{{
+" ============================================================================
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --hidden
@@ -227,7 +266,10 @@ nmap <Leader>f :CtrlP<CR>
 nmap <Leader>l :CtrlPLine<CR>
 nmap <Leader>t :CtrlPTag<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
+" }}}
+" ============================================================================
+" make YCM compatible with UltiSnips (using supertab) {{{
+" ============================================================================
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -240,34 +282,46 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 
-" better key bindings for UltiSnipsExpandTrigger
+" }}}
+" ============================================================================
+" better key bindings for UltiSnipsExpandTrigger {{{
+" ============================================================================
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" split
-nnoremap <leader>h :split<enter>
-nnoremap <leader>v :vsplit<enter>
-
-" Open/close tagbar with \b
-nmap <silent> <leader>tb :TagbarToggle<CR>
-
-" autopair
+" }}}
+" ============================================================================
+" autopair {{{
+" ============================================================================
 let g:AutoPairsMultilineClose=0
 
-" vim-sneak
+" }}}
+" ============================================================================
+" vim-sneak {{{
+" ============================================================================
 let g:sneak#streak = 1
 nmap <bs> <Plug>SneakPrevious
 xmap <bs> <Plug>SneakPrevious
 
-" vim-airline
+" }}}
+" ============================================================================
+" vim-airline {{{
+" ============================================================================
 let g:airline#extensions#tabline#enabled = 1
 
-" syntastic
+" }}}
+" ============================================================================
+" syntastic {{{
+" ============================================================================
 let g:syntastic_javascript_checkers = ['standard']
 autocmd bufwritepost *.js silent !standard --fix %
 set autoread
 
+" }}}
+" ============================================================================
+" FZF {{{
+" ============================================================================
 set rtp+=~/.fzf
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -283,8 +337,12 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-set term=screen-256color
-
-" Undotree toggle
+" }}}
+" ============================================================================
+" Undotree toggle {{{
+" ============================================================================
 nnoremap U :UndotreeToggle<cr>
 let g:jsx_ext_required = 0
+
+" }}}
+" ============================================================================
