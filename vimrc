@@ -139,6 +139,7 @@ call plug#begin('~/.vim/plugged')
 " ----- Making Vim look good ------------------------------------------
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
+Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline'
 
 " ----- Vim as a programmer's text editor -----------------------------

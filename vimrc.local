@@ -7,7 +7,7 @@ let g:rehash256 = 1
 
 " when using a projector, use a light color scheme and no syntax
 function Pres ()
-  :colorscheme dawn
+  :colorscheme seoul256
   :syntax off
 endfunction
 map <Leader>pres :call Pres()<CR>
