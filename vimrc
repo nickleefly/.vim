@@ -142,14 +142,13 @@ Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 
 " ----- Vim as a programmer's text editor -----------------------------
-Plug 'rking/ag.vim'
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'terryma/vim-expand-region'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
