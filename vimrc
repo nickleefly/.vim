@@ -1,3 +1,6 @@
+if has('python3')
+  silent! python3 1
+endif
 " vim: set foldmethod=marker foldlevel=0
 " ============================================================================
 " .vimrc of Xiuyu Li {{{
