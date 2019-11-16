@@ -111,3 +111,6 @@ cmap w!! w !sudo tee > /dev/null %
 nmap <Leader>w :w!<cr>
 nmap <Leader>q :q!<cr>
 nmap <Leader>s :wq!<cr>
+
+" Run python
+nnoremap <buffer> <Leader>r :!python %<cr>
