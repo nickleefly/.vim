@@ -148,7 +148,6 @@ Plug 'vim-airline/vim-airline'
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'junegunn/fzf',        { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -244,33 +243,6 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " }}}
 " ============================================================================
-" CtrlP {{{
-" ============================================================================
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden
-
-  let g:ctrlp_match_window = 'bottom,order:ttb'
-  let g:ctrlp_switch_buffer = 0
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_user_command = ['ag %s --files-with-matches -g ""']
-  let g:ctrlp_user_command +=
-      \ ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-else
-  " Fall back to using git ls-files if Ag is not available
-  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-  let g:ctrlp_user_command =
-      \ ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-endif
-nmap <Leader>r :CtrlPMRU<CR>
-nmap <Leader>b :CtrlPBuffer<CR>
-nmap <Leader>f :CtrlP<CR>
-nmap <Leader>l :CtrlPLine<CR>
-nmap <Leader>t :CtrlPTag<CR>
-
-" }}}
-" ============================================================================
 " make YCM compatible with UltiSnips (using supertab) {{{
 " ============================================================================
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -325,6 +297,8 @@ set autoread
 " ============================================================================
 " FZF {{{
 " ============================================================================
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git'
+nnoremap <C-p> :FZF<Cr>
 set rtp+=~/.fzf
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
