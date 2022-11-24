@@ -183,7 +183,10 @@ Plug 'moll/vim-node'
 Plug 'mmalecki/vim-node.js'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'sheerun/vim-polyglot'
 
 " ---- Extras/Advanced Plugs ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
