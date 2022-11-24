@@ -170,6 +170,7 @@ Plug 'mattn/emmet-vim'
 " ----- Working with Git ----------------------------------------------
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 " ----- Syntax Plugs ------------------------------------------------
 Plug 'tpope/vim-git'
@@ -185,7 +186,6 @@ Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'vim-syntastic/syntastic'
 Plug 'hashivim/vim-terraform'
-Plug 'juliosueiras/vim-terraform-completion'
 Plug 'sheerun/vim-polyglot'
 
 " ---- Extras/Advanced Plugs ----------------------------------------
