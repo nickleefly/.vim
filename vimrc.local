@@ -28,7 +28,7 @@ noremap <Leader><Space> :noh<CR>:call clearmatches()<CR>
 " whenever yanking to the "unnamed" register.
 set clipboard=unnamed
 
-set wrap
+set nowrap
 set modelines=0
 set tabstop=2
 set expandtab
@@ -91,6 +91,12 @@ map J <C-e>
 map K <C-y>
 map H zhzh
 map L zlzl
+
+" resize
+nnoremap <Up>    :resize -2<CR>
+nnoremap <Down>  :resize +2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 " control to switch windows
 map <C-j> <C-w>j
