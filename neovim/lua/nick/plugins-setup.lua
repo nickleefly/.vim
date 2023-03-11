@@ -40,7 +40,6 @@ return packer.startup(function(use)
   use("szw/vim-maximizer") -- maximizes and restores current window
 
   -- essential plugins
-  use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
   use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
   -- commenting with gc
@@ -107,8 +106,42 @@ return packer.startup(function(use)
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
   use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
+  -- selection
+  use("mg979/vim-visual-multi")
+  use("gcmt/wildfire.vim")
+
+  -- neoformat
+  use("sbdchd/neoformat")
+
+  -- EasyAlign
+  use("junegunn/vim-easy-align")
+
+  -- tpope Repeat
+  use("tpope/vim-repeat")
+  use("tpope/vim-sensible")
+  use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+  use("tpope/vim-fugitive")
+
+  -- sneak
+  use("justinmk/vim-sneak")
+
+  -- whichkey
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  })
+
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+  use("airblade/vim-gitgutter")
 
   if packer_bootstrap then
     require("packer").sync()
