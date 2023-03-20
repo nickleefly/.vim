@@ -62,3 +62,5 @@ keymap.set("n", "w!!", "<cmd>w !sudo tee > /dev/null %")
 keymap.set("n", "<leader>w", "<cmd>w!<cr>")
 keymap.set("n", "<leader>q", "<cmd>q!<cr>")
 keymap.set("n", "<leader>s", "<cmd>wq!<cr>")
+
+keymap.set("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>")
