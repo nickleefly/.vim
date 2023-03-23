@@ -185,12 +185,19 @@ Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'vim-syntastic/syntastic'
 Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 Plug 'sheerun/vim-polyglot'
 
 " ---- Extras/Advanced Plugs ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ekalinin/Dockerfile.vim'
 
+" ---- code format
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
 call plug#end()
 
 " }}}
@@ -200,15 +207,37 @@ call plug#end()
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+" }}}
 
 " }}}
+" ============================================================================
+" the glaive#Install() should go after the "call plug()"
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
+  autocmd FileType swift AutoFormatBuffer swift-format
+augroup END
+" }}}
+
 " ============================================================================
 " snipmate {{{
 " ============================================================================
 " Configure snipmate dir
 let g:snippets_dir="~/.vim/snippets"
-
 " }}}
+
 " ============================================================================
 " File type specifics {{{
 " ============================================================================
@@ -242,8 +271,8 @@ let go_fmt_autosave = 1
 let g:go_play_open_browser = 0
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 " }}}
+
 " ============================================================================
 " make YCM compatible with UltiSnips (using supertab) {{{
 " ============================================================================
@@ -258,44 +287,44 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
-
 " }}}
+
 " ============================================================================
 " better key bindings for UltiSnipsExpandTrigger {{{
 " ============================================================================
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 " }}}
+
 " ============================================================================
 " autopair {{{
 " ============================================================================
 let g:AutoPairsMultilineClose=0
-
 " }}}
+
 " ============================================================================
 " vim-sneak {{{
 " ============================================================================
 let g:sneak#streak = 1
 nmap <bs> <Plug>SneakPrevious
 xmap <bs> <Plug>SneakPrevious
-
 " }}}
+
 " ============================================================================
 " vim-airline {{{
 " ============================================================================
 let g:airline#extensions#tabline#enabled = 1
-
 " }}}
+
 " ============================================================================
 " syntastic {{{
 " ============================================================================
 let g:syntastic_javascript_checkers = ['standard']
 autocmd bufwritepost *.js silent !standard --fix %
 set autoread
-
 " }}}
+
 " ============================================================================
 " FZF {{{
 " ============================================================================
@@ -315,13 +344,13 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
 " }}}
+
 " ============================================================================
 " Undotree toggle {{{
 " ============================================================================
 nnoremap U :UndotreeToggle<cr>
 let g:jsx_ext_required = 0
-
 " }}}
+
 " ============================================================================
