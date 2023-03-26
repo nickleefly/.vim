@@ -197,6 +197,8 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " ---- EasyAlign
 Plug 'junegunn/vim-easy-align'
+" On-demand lazy load
+Plug 'liuchengxu/vim-which-key'
 
 " ---- code format
 Plug 'google/vim-maktaba'
@@ -357,7 +359,7 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 " Undotree toggle {{{
 " ============================================================================
 nnoremap U :UndotreeToggle<cr>
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = -1
 " }}}
 
 " ============================================================================
@@ -365,7 +367,8 @@ let g:jsx_ext_required = 0
 " ============================================================================
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+nnoremap <silent> <leader> :WhichKey ','<CR>
 " }}}
