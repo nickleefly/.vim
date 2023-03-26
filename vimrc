@@ -1,7 +1,10 @@
 if has('python3')
   silent! python3 1
 endif
-" vim: set foldmethod=marker foldlevel=0
+" :set foldmethod=marker foldlevel=1
+" :set foldmethod=indent
+" :set foldmethod=syntax
+
 " ============================================================================
 " .vimrc of Xiuyu Li {{{
 " ============================================================================
@@ -10,8 +13,8 @@ endif
 " Gotta be first {{{
 " ============================================================================
 set nocompatible
-
 " }}}
+
 " ============================================================================
 " BASIC SETTINGS {{{
 " ============================================================================
@@ -60,8 +63,8 @@ set laststatus=2
 set backspace=indent,eol,start
 
 set term=screen-256color
-
 " }}}
+
 " ============================================================================
 " NERDTree configuration {{{
 " ============================================================================
@@ -73,8 +76,8 @@ map <Leader>nf :NERDTreeFind<CR>
 " Close Nerdtree when selecting a file
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeDirArrows=0
-
 " }}}
+
 " ============================================================================
 " Some mapping with Leader key {{{
 " ============================================================================
@@ -101,8 +104,8 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
 " }}}
+
 " ============================================================================
 " Remember last location in file {{{
 " ============================================================================
@@ -132,8 +135,8 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 au BufRead,BufNewFile *.txt call s:setupWrapping()
-
 " }}}
+
 " ============================================================================
 " VIM-PLUG BLOCK {{{
 " ============================================================================
@@ -202,8 +205,8 @@ Plug 'google/vim-codefmt'
 " `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
 call plug#end()
-
 " }}}
+
 " ============================================================================
 " Include user's local vim config {{{
 " ============================================================================
@@ -212,7 +215,8 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " }}}
 
-" }}}
+" ============================================================================
+" {{{
 " ============================================================================
 " the glaive#Install() should go after the "call plug()"
 call glaive#Install()
@@ -357,7 +361,7 @@ let g:jsx_ext_required = 0
 " }}}
 
 " ============================================================================
-" Easyalign
+" Easyalign {{{
 " ============================================================================
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
