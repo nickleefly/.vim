@@ -61,6 +61,8 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
+  use("junegunn/fzf")
+  use("junegunn/fzf.vim")
   use({ "ibhagwan/fzf-lua", requires = "nvim-tree/nvim-web-devicons" })
 
   -- autocompletion

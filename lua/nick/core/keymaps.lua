@@ -63,4 +63,6 @@ keymap.set("n", "<leader>w", "<cmd>w!<cr>")
 keymap.set("n", "<leader>q", "<cmd>q!<cr>")
 keymap.set("n", "<leader>s", "<cmd>wq!<cr>")
 
-keymap.set("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>")
+keymap.set("n", "<leader>zp", "<cmd>lua require('fzf-lua').files()<CR>")
+keymap.set("n", "<leader>zb", "<cmd>lua require('fzf-lua').buffers()<CR>")
+keymap.set("n", "<leader>zl", "<cmd>lua require('fzf-lua').lines()<CR>")
