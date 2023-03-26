@@ -92,7 +92,7 @@ nnoremap <leader>v :vsplit<enter>
 nmap <silent> <leader>tb :TagbarToggle<CR>
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>ct :!ctags --extra=+f -R *<CR><CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
@@ -191,6 +191,9 @@ Plug 'sheerun/vim-polyglot'
 " ---- Extras/Advanced Plugs ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ekalinin/Dockerfile.vim'
+
+" ---- EasyAlign
+Plug 'junegunn/vim-easy-align'
 
 " ---- code format
 Plug 'google/vim-maktaba'
@@ -354,3 +357,11 @@ let g:jsx_ext_required = 0
 " }}}
 
 " ============================================================================
+" Easyalign
+" ============================================================================
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}

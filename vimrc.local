@@ -119,5 +119,5 @@ nmap <Leader>q :q!<cr>
 nmap <Leader>s :wq!<cr>
 
 " Run python
-map <Leader>ru :! clear; python3 %<cr>
+map <Leader>rp :! clear; python3 %<cr>
 let g:syntastic_python_checkers = ['python3']
