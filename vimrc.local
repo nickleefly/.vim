@@ -121,3 +121,5 @@ nmap <Leader>s :wq!<cr>
 " Run python
 map <Leader>rp :! clear; python3 %<cr>
 let g:syntastic_python_checkers = ['python3']
+
+nmap <Leader>go :w<CR>:!cd %:p:h && go test<CR>
