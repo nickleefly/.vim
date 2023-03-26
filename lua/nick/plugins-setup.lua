@@ -115,9 +115,6 @@ return packer.startup(function(use)
   -- neoformat
   use("sbdchd/neoformat")
 
-  -- EasyAlign
-  use("junegunn/vim-easy-align")
-
   -- tpope Repeat
   use("tpope/vim-repeat")
   use("tpope/vim-sensible")

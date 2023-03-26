@@ -231,11 +231,6 @@ _G.packer_plugins = {
     path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
     url = "https://github.com/inkarkat/vim-ReplaceWithRegister"
   },
-  ["vim-easy-align"] = {
-    loaded = true,
-    path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/vim-easy-align",
-    url = "https://github.com/junegunn/vim-easy-align"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/vim-fugitive",
