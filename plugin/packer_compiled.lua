@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -270,11 +275,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/vim-sensible",
     url = "https://github.com/tpope/vim-sensible"
-  },
-  ["vim-sneak"] = {
-    loaded = true,
-    path = "/Users/01589048/.local/share/nvim/site/pack/packer/start/vim-sneak",
-    url = "https://github.com/justinmk/vim-sneak"
   },
   ["vim-surround"] = {
     loaded = true,

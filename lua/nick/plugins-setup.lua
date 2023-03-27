@@ -123,8 +123,8 @@ return packer.startup(function(use)
   use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
   use("tpope/vim-fugitive")
 
-  -- sneak
-  use("justinmk/vim-sneak")
+  -- leap motion
+  use("ggandor/leap.nvim")
 
   -- whichkey
   use({
