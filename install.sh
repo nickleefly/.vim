@@ -23,11 +23,10 @@ if ! [ "$SCRIPTDIR" == "$HOME/.vim" ]; then
   exit $?
 fi
 
-cd $HOME
-ln -s .vim/vimrc .vimrc               || fail ".vimrc"
-ln -s .vim/vimrc.local .vimrc.local   || fail ".vimrc.local"
-ln -s .vim/gvimrc .gvimrc             || fail ".gvimrc"
-ln -s .vim/gvimrc.local .gvimrc.local || fail ".gvimrc.local"
+ln -s .vim/vimrc ~/.vimrc               || fail ".vimrc"
+ln -s .vim/vimrc.local ~/.vimrc.local   || fail ".vimrc.local"
+ln -s .vim/gvimrc ~/.gvimrc             || fail ".gvimrc"
+ln -s .vim/gvimrc.local ~/.gvimrc.local || fail ".gvimrc.local"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
