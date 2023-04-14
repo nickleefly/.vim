@@ -363,7 +363,7 @@ let g:jsx_ext_required = -1
 " }}}
 
 " ============================================================================
-" Easyalign {{{
+" Easyalign and more {{{
 " ============================================================================
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -371,5 +371,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 let g:terraform_fmt_on_save = 1
+
 nnoremap <silent> <leader> :WhichKey ','<CR>
 " }}}
