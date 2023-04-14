@@ -370,5 +370,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+let g:terraform_fmt_on_save = 1
 nnoremap <silent> <leader> :WhichKey ','<CR>
 " }}}
