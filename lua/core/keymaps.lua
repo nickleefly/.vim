@@ -1,6 +1,3 @@
--- set leader key to space
-vim.g.mapleader = " "
-
 local keymap = vim.keymap -- for conciseness
 
 ---------------------
@@ -38,9 +35,6 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
-
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
@@ -63,6 +57,8 @@ keymap.set("n", "<leader>w", "<cmd>w!<cr>")
 keymap.set("n", "<leader>q", "<cmd>q!<cr>")
 keymap.set("n", "<leader>s", "<cmd>wq!<cr>")
 
-keymap.set("n", "<leader>zp", "<cmd>lua require('fzf-lua').files()<CR>")
+keymap.set("n", "<leader>zf", "<cmd>lua require('fzf-lua').files()<CR>")
 keymap.set("n", "<leader>zb", "<cmd>lua require('fzf-lua').buffers()<CR>")
 keymap.set("n", "<leader>zl", "<cmd>lua require('fzf-lua').lines()<CR>")
+keymap.set("n", "<leader>za", ":Ag<CR>")
+keymap.set("n", "<leader>zr", ":Rg<CR>")
