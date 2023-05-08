@@ -12,11 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- set leader key to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- import lazy safely
+-- import packer safely
 local status, lazy = pcall(require, "lazy")
 if not status then
   return
@@ -75,9 +71,15 @@ return lazy.setup({
   { "ibhagwan/fzf-lua", dependencies = "nvim-tree/nvim-web-devicons" },
 
   -- autocompletion
-  "hrsh7th/nvim-cmp", -- completion plugin
-  "hrsh7th/cmp-buffer", -- source for text in buffer
-  "hrsh7th/cmp-path", -- source for file system paths
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+    },
+  },
 
   -- managing & installing lsp servers, linters & formatters
   "williamboman/mason.nvim", -- in charge of managing lsp servers, linters & formatters

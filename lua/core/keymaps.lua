@@ -4,6 +4,10 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
+-- set leader key to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
 

@@ -1,20 +1,42 @@
 require("plugins-setup")
+
 require("core.options")
 require("core.keymaps")
 require("core.colorscheme")
 require("core.autoread")
-require("plugins.comment")
-require("plugins.nvim-tree")
-require("plugins.lualine")
-require("plugins.telescope")
-require("plugins.nvim-cmp")
-require("plugins.lsp.mason")
-require("plugins.lsp.lspsaga")
-require("plugins.lsp.lspconfig")
-require("plugins.lsp.null-ls")
-require("plugins.autopairs")
-require("plugins.treesitter")
-require("plugins.gitsigns")
-require("plugins.bufferline")
-require("plugins.web-devicons")
-require("plugins.leap")
+
+-- Load each plugin from lua/plugins
+local plugins = {
+  "comment",
+  "nvim-tree",
+  "lualine",
+  "telescope",
+  "nvim-cmp",
+  "lsp.mason",
+  "lsp.lspsaga",
+  "lsp.lspconfig",
+  "lsp.null-ls",
+  "autopairs",
+  "treesitter",
+  "gitsigns",
+  "bufferline",
+  "web-devicons",
+  "leap",
+}
+
+local errors = {}
+local error_plugins = {}
+
+for _, plugin in pairs(plugins) do
+  local ok, err_msg = pcall(require, "plugins." .. plugin)
+  if not ok then
+    table.insert(errors, err_msg)
+    table.insert(error_plugins, plugin)
+  end
+end
+
+for i, err_msg in pairs(errors) do
+  vim.notify(err_msg, vim.log.levels.ERROR, {
+    title = "Error loading : " .. error_plugins[i],
+  })
+end
