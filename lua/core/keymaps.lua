@@ -36,6 +36,10 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- Plugin Keybinds
 ----------------------
 
+-- nvim-tree
+keymap.set("n", "<leader>-", "<cmd>NvimTreeResize -5<cr>", { desc = "Decrease window width" })
+keymap.set("n", "<leader>=", "<cmd>NvimTreeResize +5<cr>", { desc = "Increase window width" })
+
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
