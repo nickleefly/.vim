@@ -129,6 +129,7 @@ return lazy.setup({
   "tpope/vim-repeat",
   "tpope/vim-surround", -- add, delete, change surroundings (it's awesome
   "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
 
   -- leap motion
   "ggandor/leap.nvim",
@@ -159,6 +160,15 @@ return lazy.setup({
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     },
+  },
+
+  -- latex markdown
+  "lervag/vimtex",
+  {
+    "iamcco/markdown-preview.nvim",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   -- trouble

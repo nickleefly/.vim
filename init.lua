@@ -22,6 +22,7 @@ local plugins = {
   "bufferline",
   "web-devicons",
   "leap",
+  "vimtex",
 }
 
 local errors = {}
