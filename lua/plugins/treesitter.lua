@@ -17,16 +17,10 @@ treesitter.setup({
   -- ensure these language parsers are installed
   ensure_installed = {
     "json",
-    "javascript",
-    "typescript",
-    "tsx",
     "yaml",
-    "html",
-    "css",
     "markdown",
     "markdown_inline",
     "svelte",
-    "graphql",
     "bash",
     "lua",
     "vim",

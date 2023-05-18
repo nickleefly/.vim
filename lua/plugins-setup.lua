@@ -90,13 +90,17 @@ return lazy.setup({
   "hrsh7th/cmp-nvim-lsp", -- for autocompletion
   {
     "glepnir/lspsaga.nvim",
-    branch = "main",
+    event = "LspAttach",
+    config = function()
+      require("lspsaga").setup({})
+    end,
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-  }, -- enhanced lsp uis
-  "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports
+  },
+
+  -- enhanced lsp uis
   "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 
   -- formatting & linting
