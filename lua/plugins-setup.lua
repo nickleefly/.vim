@@ -162,14 +162,33 @@ return lazy.setup({
     },
   },
 
-  -- latex markdown
-  "lervag/vimtex",
   {
-    "iamcco/markdown-preview.nvim",
-    config = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    opts = {
+      load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/notes",
+            },
+          },
+        },
+      },
+    },
+    dependencies = { { "nvim-lua/plenary.nvim" } },
   },
+
+  -- -- latex markdown
+  -- "lervag/vimtex",
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   config = function()
+  --     vim.fn["mkdp#util#install"]()
+  --   end,
+  -- },
 
   -- trouble
   -- {
