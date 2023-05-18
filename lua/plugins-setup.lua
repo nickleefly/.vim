@@ -152,20 +152,6 @@ return lazy.setup({
     end,
   },
 
-  -- chatgpt
-  {
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    cmd = "ChatGPT",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
-
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
