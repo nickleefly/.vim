@@ -21,6 +21,7 @@ local plugins = {
   "bufferline",
   "web-devicons",
   "leap",
+  "autorun",
   -- "vimtex",
 }
 
