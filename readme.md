@@ -30,7 +30,7 @@ xcode-select --install
 
 ## Plugins
 #### Plugin Manager
-- [wbthomason/packer](https://github.com/wbthomason/packer.nvim) - Popular plugin manager
+- [LazyVim/Lazyvim](https://github.com/LazyVim/LazyVim) - Popular plugin manager
 
 #### Dependency For Other Plugins
 - [nvim-lua/plenary](https://github.com/nvim-lua/plenary.nvim) - Useful lua functions other plugins use
