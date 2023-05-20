@@ -33,13 +33,6 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
   -- see outline on right hand side
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
-
-  -- typescript specific keymaps (e.g. rename file and update imports)
-  if client.name == "tsserver" then
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
-  end
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -73,7 +66,9 @@ lspconfig["lua_ls"].setup({
   },
 })
 
-lspconfig["pyright"].setup({})
+lspconfig["pyright"].setup({
+  on_attach = on_attach,
+})
 
 lspconfig["terraformls"].setup({
   capabilities = capabilities,

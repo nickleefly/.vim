@@ -186,12 +186,12 @@ return lazy.setup({
 
   -- -- latex markdown
   -- "lervag/vimtex",
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   config = function()
-  --     vim.fn["mkdp#util#install"]()
-  --   end,
-  -- },
+  {
+    "iamcco/markdown-preview.nvim",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 
   -- trouble
   -- {
