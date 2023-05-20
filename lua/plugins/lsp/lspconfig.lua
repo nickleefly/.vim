@@ -81,3 +81,15 @@ lspconfig["terraformls"].setup({
     "hcl",
   },
 })
+
+lspconfig["gopls"].setup({
+  on_attach = on_attach,
+  root_pattern = { "go.work", "go.mod", ".git" },
+  cmd = { "gopls" },
+  filetypes = {
+    "go",
+    "gomod",
+    "gowork",
+    "gotmpl",
+  },
+})
