@@ -16,10 +16,29 @@ null_ls.setup({
   -- setup formatters & linters
   sources = {
     --  to disable file types use
+    --  https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#formatting
+    formatting.clang_format,
+    formatting.gofmt,
+    formatting.goimports,
+    formatting.goimports_reviser,
+    formatting.golines,
+    formatting.blue, -- python
+    formatting.isort, -- sort imports alphabetically
+    formatting.jq, -- json
+    formatting.eslint,
+    -- formatting.standardjs,
     formatting.stylua, -- lua formatter
     formatting.terrafmt, -- format terraform block in markdown
     formatting.terraform_fmt, -- terraform_fmt
-    diagnostics.tfsec, -- Security scanner for Terraform code
+    formatting.deno_fmt, -- will use the source for all supported file types
+    formatting.deno_fmt.with({
+      filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
+    }),
+
+    -- diagnostics
+    diagnostics.npm_groovy_lint, -- lint, format and auto-fix groovy, jenkinsfile, and gradle files
+    diagnostics.cpplint, --check c/c++ files for style issues following google's c++ style guide
+    diagnostics.tfsec, -- security scanner for terraform code
     diagnostics.terraform_validate, -- terraform validate
     diagnostics.eslint_d.with({ -- js/ts linter
       -- only enable eslint if root has .eslintrc.js

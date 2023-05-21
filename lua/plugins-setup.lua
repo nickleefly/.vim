@@ -32,7 +32,7 @@ return lazy.setup({
 
   "nvim-lua/plenary.nvim", -- lua functions that many plugins use
 
-  "bluz71/vim-nightfly-guicolors", -- preferred colorscheme
+  "EdenEast/nightfox.nvim",
 
   "christoomey/vim-tmux-navigator", -- tmux & split window navigation
 
@@ -81,16 +81,22 @@ return lazy.setup({
     },
   },
 
-  -- managing & installing lsp servers, linters & formatters
-  "williamboman/mason.nvim", -- in charge of managing lsp servers, linters & formatters
-  "williamboman/mason-lspconfig.nvim", -- bridges gap b/w mason & lspconfig
-
-  -- configuring lsp servers
-  "neovim/nvim-lspconfig", -- easily configure language servers
-  "hrsh7th/cmp-nvim-lsp", -- for autocompletion
+  {
+    -- configuring lsp servers
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    dependencies = {
+      -- in charge of managing lsp servers, linters & formatters
+      "williamboman/mason.nvim",
+      -- managing & installing lsp servers, linters & formatters
+      "williamboman/mason-lspconfig.nvim",
+      -- for autocompletion
+      "hrsh7th/cmp-nvim-lsp",
+    },
+  },
   {
     "glepnir/lspsaga.nvim",
-    event = "LspAttach",
     config = function()
       require("lspsaga").setup({})
     end,
