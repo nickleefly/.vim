@@ -215,4 +215,5 @@ return lazy.setup({
   -- git integration
   "lewis6991/gitsigns.nvim", -- show line modifications on left hand side
   "airblade/vim-gitgutter",
+  "f-person/git-blame.nvim",
 })
