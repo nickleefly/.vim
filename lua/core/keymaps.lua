@@ -39,7 +39,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- nvim-tree
 keymap.set("n", "<leader>-", "<cmd>NvimTreeResize -5<cr>", { desc = "Decrease window width" })
 keymap.set("n", "<leader>=", "<cmd>NvimTreeResize +5<cr>", { desc = "Increase window width" })
-keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
 
 -- See `:help telescope.builtin`
 keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
