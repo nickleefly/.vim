@@ -13,17 +13,17 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
 -- configure nvim-tree
 nvimtree.setup({
-  disable_netrw = false,
-  -- change folder arrow icons
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
   renderer = {
-    icons = {
-      glyphs = {
-        folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
-        },
-      },
-    },
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
   },
   -- disable window_picker for
   -- explorer to work well with
@@ -35,9 +35,6 @@ nvimtree.setup({
       },
     },
   },
-  -- 	git = {
-  -- 		ignore = false,
-  -- 	},
 })
 
 -- open nvim-tree on setup
