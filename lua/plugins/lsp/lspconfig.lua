@@ -1,12 +1,18 @@
+-- import cmp-nvim-lsp plugin safely
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+  return
+end
+
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
   return
 end
 
--- import cmp-nvim-lsp plugin safely
-local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_status then
+-- import mason-lspconfig plugin safely
+local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status then
   return
 end
 
@@ -46,17 +52,15 @@ for type, icon in pairs(signs) do
 end
 
 -- configure lua server (with special settings)
-lspconfig["lua_ls"].setup({
+lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  settings = { -- custom settings for lua
+  settings = {
     Lua = {
-      -- make the language server recognize "vim" global
       diagnostics = {
         globals = { "vim" },
       },
       workspace = {
-        -- make language server aware of runtime files
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [vim.fn.stdpath("config") .. "/lua"] = true,
@@ -66,30 +70,11 @@ lspconfig["lua_ls"].setup({
   },
 })
 
-lspconfig["pyright"].setup({
-  on_attach = on_attach,
-})
-
-lspconfig["terraformls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = {
-    "terraform",
-    "tf",
-    "tfvars",
-    "terraform-vars",
-    "hcl",
-  },
-})
-
-lspconfig["gopls"].setup({
-  on_attach = on_attach,
-  root_pattern = { "go.work", "go.mod", ".git" },
-  cmd = { "gopls" },
-  filetypes = {
-    "go",
-    "gomod",
-    "gowork",
-    "gotmpl",
-  },
-})
+-- setup default config for other servers
+local servers = { "pyright", "terraformls", "gopls", "clangd", "dockerls", "yamlls", "marksman" }
+for _, server in ipairs(servers) do
+  lspconfig[server].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end

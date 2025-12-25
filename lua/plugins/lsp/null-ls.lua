@@ -18,34 +18,30 @@ null_ls.setup({
     --  to disable file types use
     --  https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#formatting
     formatting.clang_format,
-    formatting.gofmt,
-    formatting.goimports,
-    formatting.goimports_reviser,
-    formatting.golines,
-    formatting.blue, -- python
+    -- formatting.blue, -- python (not in none-ls core)
     formatting.isort, -- sort imports alphabetically
-    formatting.jq, -- json
-    formatting.eslint,
+    -- formatting.jq, -- json (not in none-ls core)
+    -- formatting.eslint, (not in none-ls core)
     -- formatting.standardjs,
     formatting.stylua, -- lua formatter
-    formatting.terrafmt, -- format terraform block in markdown
+    -- formatting.terrafmt, -- format terraform block in markdown (not in none-ls core)
     formatting.terraform_fmt, -- terraform_fmt
-    formatting.deno_fmt, -- will use the source for all supported file types
-    formatting.deno_fmt.with({
-      filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
-    }),
+    -- formatting.deno_fmt, -- will use the source for all supported file types (not in none-ls core)
+    -- formatting.deno_fmt.with({
+    --   filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
+    -- }),
 
     -- diagnostics
     diagnostics.npm_groovy_lint, -- lint, format and auto-fix groovy, jenkinsfile, and gradle files
-    diagnostics.cpplint, --check c/c++ files for style issues following google's c++ style guide
+    -- diagnostics.cpplint, --check c/c++ files for style issues following google's c++ style guide (not in none-ls core)
     diagnostics.tfsec, -- security scanner for terraform code
     diagnostics.terraform_validate, -- terraform validate
-    diagnostics.eslint_d.with({ -- js/ts linter
-      -- only enable eslint if root has .eslintrc.js
-      condition = function(utils)
-        return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
-      end,
-    }),
+    -- diagnostics.eslint_d.with({ -- js/ts linter (not in none-ls core)
+    --   -- only enable eslint if root has .eslintrc.js
+    --   condition = function(utils)
+    --     return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+    --   end,
+    -- }),
   },
   -- configure format on save
   on_attach = function(current_client, bufnr)

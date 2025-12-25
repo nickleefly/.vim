@@ -3,7 +3,6 @@ if not leap_setup then
   return
 end
 
-leap.add_default_mappings()
 leap.setup({
     opts = {
         max_phase_one_targets = nil,
@@ -26,3 +25,11 @@ leap.setup({
         }
     }
 })
+
+-- Set up Sneak-style keymaps (removed deprecated add_default_mappings)
+vim.keymap.set('n', 's', '<Plug>(leap-forward)', { remap = true })
+vim.keymap.set('n', 'S', '<Plug>(leap-backward)', { remap = true })
+vim.keymap.set('x', 's', '<Plug>(leap-forward)', { remap = true })
+vim.keymap.set('x', 'S', '<Plug>(leap-backward)', { remap = true })
+vim.keymap.set('o', 's', '<Plug>(leap-forward)', { remap = true })
+vim.keymap.set('o', 'S', '<Plug>(leap-backward)', { remap = true })

@@ -40,7 +40,12 @@ return lazy.setup({
   "inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion
 
   -- commenting with gc
-  "numToStr/Comment.nvim",
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("plugins.comment")
+    end,
+  },
 
   -- file explorer
   {
@@ -51,17 +56,35 @@ return lazy.setup({
   },
 
   -- buffer
-  { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("plugins.bufferline")
+    end,
+  },
 
   -- vs-code like icons
   "nvim-tree/nvim-web-devicons",
 
   -- statusline
-  "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("plugins.lualine")
+    end,
+  },
 
   -- fuzzy finding w/ telescope
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- dependency for better sorting performance
-  { "nvim-telescope/telescope.nvim", branch = "0.1.x" }, -- fuzzy finder
+  -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    config = function()
+      require("plugins.telescope")
+    end,
+  },
 
   "junegunn/fzf",
   "junegunn/fzf.vim",
@@ -75,7 +98,14 @@ return lazy.setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim",
     },
+    config = function()
+      require("plugins.nvim-cmp")
+    end,
   },
 
   {
@@ -91,6 +121,9 @@ return lazy.setup({
       -- for autocompletion
       "hrsh7th/cmp-nvim-lsp",
     },
+    config = function()
+      require("plugins.lsp.lspconfig")
+    end,
   },
   {
     "glepnir/lspsaga.nvim",
@@ -117,14 +150,19 @@ return lazy.setup({
     },
   },
 
-  -- enhanced lsp uis
-  "L3MON4D3/LuaSnip", -- snippet engine
-  "saadparwaiz1/cmp_luasnip", -- for autocompletion
-  "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
-
-  -- formatting & linting
-  "jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
-  "jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
+  -- enhanced lsp uis formatting & linting
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      require("plugins.lsp.null-ls")
+    end,
+  },
+  {
+    "jayp0521/mason-null-ls.nvim",
+    config = function()
+      require("plugins.lsp.mason")
+    end,
+  },
 
   -- treesitter configuration
   {
@@ -136,10 +174,18 @@ return lazy.setup({
     dependencies = {
       "windwp/nvim-ts-autotag",
     },
+    config = function()
+      require("plugins.treesitter")
+    end,
   },
 
   -- auto closing
-  "windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("plugins.autopairs")
+    end,
+  },
 
   -- selection
   "mg979/vim-visual-multi",
@@ -155,46 +201,79 @@ return lazy.setup({
   "tpope/vim-rhubarb",
 
   -- leap motion
-  "ggandor/leap.nvim",
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("plugins.leap")
+    end,
+  },
 
   -- whichkey
   {
     "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
-    end,
-  },
-
-  -- -- latex markdown
-  -- "lervag/vimtex",
-  {
-    "iamcco/markdown-preview.nvim",
-    config = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
   },
 
   -- trouble
-  -- {
-  --   "folke/trouble.nvim",
-  --   dependencies = "nvim-tree/nvim-web-devicons",
-  --   config = function()
-  --     require("trouble").setup({
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     })
-  --   end,
-  -- },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
 
   -- git integration
-  "lewis6991/gitsigns.nvim", -- show line modifications on left hand side
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("plugins.gitsigns")
+    end,
+  },
   "airblade/vim-gitgutter",
   "f-person/git-blame.nvim",
 })

@@ -4,11 +4,14 @@ if not status then
   return
 end
 
+require("nvim-treesitter.install").compilers = { "clang" }
+
 -- configure treesitter
 treesitter.setup({
   -- enable syntax highlighting
   highlight = {
     enable = true,
+    disable = { "vimdoc" }, -- disable vimdoc parser due to Windows compatibility issues
   },
   -- enable indentation
   indent = { enable = true },

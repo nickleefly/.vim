@@ -44,3 +44,4 @@ luac.out
 plugin/packer_compiled.lua
 startup.log
 lazy-lock.json
+*.log

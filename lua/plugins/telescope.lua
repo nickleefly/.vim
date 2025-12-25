@@ -24,4 +24,4 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("fzf")
+-- telescope.load_extension("fzf") -- disabled: telescope-fzf-native not installed
