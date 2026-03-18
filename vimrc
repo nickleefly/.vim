@@ -154,7 +154,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ycm-core/YouCompleteMe',
+  \ { 'do': './install.py --clangd-completer --go-completer --ts-completer' }
 Plug 'terryma/vim-expand-region'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
